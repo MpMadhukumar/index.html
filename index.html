@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CGPA Calculator - B.E CSE (AIML)</title>
+  <style>
+    body {
+      min-height: 100vh;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      /* Gradient Background */
+      background: linear-gradient(135deg, #6dd5ed 0%, #2193b0 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 4px 24px rgba(34, 87, 122, 0.24);
+      border-radius: 16px;
+      padding: 40px;
+      width: 350px;
+      max-width: 90vw;
+      text-align: center;
+    }
+    h2 {
+      margin-top: 0;
+      color: #2193b0;
+      letter-spacing: 1px;
+    }
+    .subject {
+      margin: 15px 0;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.98em;
+      color: #294e6f;
+    }
+    select {
+      width: 100%;
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid #b5d7ea;
+      font-size: 1em;
+      margin-bottom: 6px;
+    }
+    button {
+      background: linear-gradient(90deg,#2193b0 0%, #6dd5ed 100%);
+      color: white;
+      font-weight: 600;
+      border: none;
+      padding: 10px 0;
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 16px;
+      font-size: 1.05em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: linear-gradient(90deg,#6dd5ed 0%, #2193b0 100%);
+    }
+    #result {
+      font-size: 1.4em;
+      color: #075985;
+      margin-top: 18px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .credits-note {
+      margin-top: 16px;
+      font-size: 0.87em;
+      color: #4a7aa7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>CGPA Calculator</h2>
+    <form id="cgpaForm">
+      <div class="subject">
+        <label>Python Programming (4 credits)</label>
+        <select id="g1">
+          <option value="10">O (10)</option>
+          <option value="10">A+ (10)</option>
+          <option value="9">A (9)</option>
+          <option value="8">B+ (8)</option>
+          <option value="7">B (7)</option>
+          <option value="6">C (6)</option>
+          <option value="5">D (5)</option>
+          <option value="0">F (0)</option>
+        </select>
+      </div>
+      <div class="subject">
+        <label>Python Programming Lab (2 credits)</label>
+        <select id="g2">
+          <option value="10">O (10)</option>
+          <option value="10">A+ (10)</option>
+          <option value="9">A (9)</option>
+          <option value="8">B+ (8)</option>
+          <option value="7">B (7)</option>
+          <option value="6">C (6)</option>
+          <option value="5">D (5)</option>
+          <option value="0">F (0)</option>
+        </select>
+      </div>
+      <div class="subject">
+        <label>Basic Electrical & Electronics Engineering (3 credits)</label>
+        <select id="g3">
+          <option value="10">O (10)</option>
+          <option value="10">A+ (10)</option>
+          <option value="9">A (9)</option>
+          <option value="8">B+ (8)</option>
+          <option value="7">B (7)</option>
+          <option value="6">C (6)</option>
+          <option value="5">D (5)</option>
+          <option value="0">F (0)</option>
+        </select>
+      </div>
+      <div class="subject">
+        <label>Physics (3 credits)</label>
+        <select id="g4">
+          <option value="10">O (10)</option>
+          <option value="10">A+ (10)</option>
+          <option value="9">A (9)</option>
+          <option value="8">B+ (8)</option>
+          <option value="7">B (7)</option>
+          <option value="6">C (6)</option>
+          <option value="5">D (5)</option>
+          <option value="0">F (0)</option>
+        </select>
+      </div>
+      <div class="subject">
+        <label>Chemistry (3 credits)</label>
+        <select id="g5">
+          <option value="10">O (10)</option>
+          <option value="10">A+ (10)</option>
+          <option value="9">A (9)</option>
+          <option value="8">B+ (8)</option>
+          <option value="7">B (7)</option>
+          <option value="6">C (6)</option>
+          <option value="5">D (5)</option>
+          <option value="0">F (0)</option>
+        </select>
+      </div>
+      <div class="subject">
+        <label>English (2 credits)</label>
+        <select id="g6">
+          <option value="10">O (10)</option>
+          <option value="10">A+ (10)</option>
+          <option value="9">A (9)</option>
+          <option value="8">B+ (8)</option>
+          <option value="7">B (7)</option>
+          <option value="6">C (6)</option>
+          <option value="5">D (5)</option>
+          <option value="0">F (0)</option>
+        </select>
+      </div>
+      <div class="subject">
+        <label>Mathematics (4 credits)</label>
+        <select id="g7">
+          <option value="10">O (10)</option>
+          <option value="10">A+ (10)</option>
+          <option value="9">A (9)</option>
+          <option value="8">B+ (8)</option>
+          <option value="7">B (7)</option>
+          <option value="6">C (6)</option>
+          <option value="5">D (5)</option>
+          <option value="0">F (0)</option>
+        </select>
+      </div>
+      <div class="subject">
+        <label>Physics & Chemistry Lab (2 credits)</label>
+        <select id="g8">
+          <option value="10">O (10)</option>
+          <option value="10">A+ (10)</option>
+          <option value="9">A (9)</option>
+          <option value="8">B+ (8)</option>
+          <option value="7">B (7)</option>
+          <option value="6">C (6)</option>
+          <option value="5">D (5)</option>
+          <option value="0">F (0)</option>
+        </select>
+      </div>
+      <div class="subject">
+        <label>Tamil and Technology (1 credit)</label>
+        <select id="g9">
+          <option value="10">O (10)</option>
+          <option value="10">A+ (10)</option>
+          <option value="9">A (9)</option>
+          <option value="8">B+ (8)</option>
+          <option value="7">B (7)</option>
+          <option value="6">C (6)</option>
+          <option value="5">D (5)</option>
+          <option value="0">F (0)</option>
+        </select>
+      </div>
+      <button type="button" onclick="calculateCGPA()">Calculate CGPA</button>
+    </form>
+    <div id="result">CGPA: 0.00</div>
+    <div class="credits-note">
+      <p>Credits are fixed as per your curriculum.<br>
+      Select your grades for each subject (O = 10, A+ = 10, A = 9, etc.).</p>
+    </div>
+  </div>
+  <script>
+    function calculateCGPA() {
+      var credits = [4,2,3,3,3,2,4,2,1];
+      var gradePoints = [
+        Number(document.getElementById('g1').value),
+        Number(document.getElementById('g2').value),
+        Number(document.getElementById('g3').value),
+        Number(document.getElementById('g4').value),
+        Number(document.getElementById('g5').value),
+        Number(document.getElementById('g6').value),
+        Number(document.getElementById('g7').value),
+        Number(document.getElementById('g8').value),
+        Number(document.getElementById('g9').value)
+      ];
+      var numerator = 0, denominator = 0;
+      for (let i = 0; i < credits.length; i++) {
+        numerator += credits[i] * gradePoints[i];
+        denominator += credits[i];
+      }
+      var cgpa = (numerator / denominator).toFixed(3);
+      document.getElementById('result').innerText = "CGPA: " + cgpa;
+    }
+  </script>
+</body>
+</html>
